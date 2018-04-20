@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oez-sp-ys1" customClass="LineChartView" customModule="Charts">
-                                <rect key="frame" x="16" y="71" width="343" height="224"/>
+                                <rect key="frame" x="16" y="71" width="343" height="190"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Graph - Manual Data Entry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nbp-eO-Y76">
@@ -37,20 +37,41 @@
                                 <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0dr-JQ-mLy" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="16" y="340" width="343" height="190"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Line Graph - API Data Entry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gn9-6f-rzA">
+                                <rect key="frame" x="16" y="311" width="343" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="wKa-Xn-ZE7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
+                                <color key="textColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="nbp-eO-Y76" firstAttribute="leading" secondItem="Oez-sp-ys1" secondAttribute="leading" id="FHY-24-oL0"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Oez-sp-ys1" secondAttribute="bottom" constant="372" id="Xad-1M-eQr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0dr-JQ-mLy" secondAttribute="bottom" constant="137" id="5iu-hT-hni"/>
+                            <constraint firstItem="Gn9-6f-rzA" firstAttribute="leading" secondItem="Oez-sp-ys1" secondAttribute="leading" id="6nz-26-S2c"/>
+                            <constraint firstItem="Gn9-6f-rzA" firstAttribute="trailing" secondItem="0dr-JQ-mLy" secondAttribute="trailing" id="Cxr-se-emY"/>
+                            <constraint firstItem="Gn9-6f-rzA" firstAttribute="trailing" secondItem="nbp-eO-Y76" secondAttribute="trailing" id="F6o-E2-HJO"/>
+                            <constraint firstItem="Gn9-6f-rzA" firstAttribute="leading" secondItem="0dr-JQ-mLy" secondAttribute="leading" id="M2P-vd-vgo"/>
+                            <constraint firstItem="0dr-JQ-mLy" firstAttribute="top" secondItem="Gn9-6f-rzA" secondAttribute="bottom" constant="8" symbolic="YES" id="M4p-Op-5Mu"/>
+                            <constraint firstItem="Gn9-6f-rzA" firstAttribute="top" secondItem="Oez-sp-ys1" secondAttribute="bottom" constant="50" id="O4v-uo-3k4"/>
                             <constraint firstItem="nbp-eO-Y76" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="dnA-Qt-S9C"/>
                             <constraint firstItem="nbp-eO-Y76" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="22" id="ezy-kW-10o"/>
                             <constraint firstItem="nbp-eO-Y76" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="h9C-v5-3h5"/>
-                            <constraint firstItem="Oez-sp-ys1" firstAttribute="top" secondItem="nbp-eO-Y76" secondAttribute="bottom" constant="8" symbolic="YES" id="tC6-cT-OR2"/>
-                            <constraint firstItem="nbp-eO-Y76" firstAttribute="trailing" secondItem="Oez-sp-ys1" secondAttribute="trailing" id="tao-nJ-l6O"/>
+                            <constraint firstItem="Gn9-6f-rzA" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="311" id="nx3-dw-aYu"/>
+                            <constraint firstItem="Oez-sp-ys1" firstAttribute="top" secondItem="nbp-eO-Y76" secondAttribute="bottom" constant="8" symbolic="YES" id="oKV-XH-bAb"/>
+                            <constraint firstItem="Gn9-6f-rzA" firstAttribute="trailing" secondItem="Oez-sp-ys1" secondAttribute="trailing" id="pcH-I5-Jf4"/>
+                            <constraint firstItem="Gn9-6f-rzA" firstAttribute="leading" secondItem="nbp-eO-Y76" secondAttribute="leading" id="vdz-1i-M2L"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="lcvApiGraph" destination="0dr-JQ-mLy" id="Bsc-41-nFH"/>
                         <outlet property="lineChartView" destination="Oez-sp-ys1" id="92O-mJ-9iw"/>
                     </connections>
                 </viewController>

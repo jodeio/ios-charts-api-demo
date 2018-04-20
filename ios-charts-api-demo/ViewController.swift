@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     // Outlets
     @IBOutlet weak var lineChartView: LineChartView!
+    @IBOutlet weak var lcvApiGraph: LineChartView!
     
     // Local data
     let grades = [95, 92, 91, 85, 75, 95]
@@ -78,6 +79,39 @@ class ViewController: UIViewController {
     }
     
     func onRetrieveGradesSuccess(grades: Status<Grades>){
+        // Create data entry instance
+        var lineChartDataEntry = [ChartDataEntry]()
+        
+        // Assigning the retrieve quarter grades
+        let gradesPerSubject:GradesPerQuarter! = grades.result?.gradesPerQuarter
+        
+        // Assigning values (constant indexes, value)
+        let firstQuarter = ChartDataEntry(x: 0, y: gradesPerSubject.firstQuarter!)
+        let secondQuarter = ChartDataEntry(x: 1, y: gradesPerSubject.secondQuarter!)
+        let thirdQuarter = ChartDataEntry(x: 2, y: gradesPerSubject.thirdQuarter!)
+        let fourthQuarter = ChartDataEntry(x: 3, y: gradesPerSubject.fourthQuarter!)
+        
+        // Appending values to the data entry
+        lineChartDataEntry.append(firstQuarter)
+        lineChartDataEntry.append(secondQuarter)
+        lineChartDataEntry.append(thirdQuarter)
+        lineChartDataEntry.append(fourthQuarter)
+        
+        // Populate data set from the entries
+        let line1 = LineChartDataSet(values: lineChartDataEntry, label: "Grade")
+        
+        // Customize graph
+        line1.colors = [UIColor.green]
+        
+        // Add data set to chart data
+        let data = LineChartData()
+        data.addDataSet(line1)
+        
+        // Render data to the view, it will trigger an update
+        lcvApiGraph.data = data
+        
+        // Add title
+        lcvApiGraph.chartDescription?.text = "Line Graph - API Data Entry"
         
     }
     
