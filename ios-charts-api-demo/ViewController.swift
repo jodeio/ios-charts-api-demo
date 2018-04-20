@@ -8,20 +8,28 @@
 
 import UIKit
 import Charts
+import Alamofire
+import AlamofireObjectMapper
 
 class ViewController: UIViewController {
     
+    // Outlets
     @IBOutlet weak var lineChartView: LineChartView!
-    var grades = [95, 92, 91, 85, 75]
+    
+    // Local data
+    let grades = [95, 92, 91, 85, 75, 95]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Render graph
-        updateGraph()
+        // Render manual data entry graph
+        renderManualDataEntryGraph()
+        
+        // Request for the json data
+        requestApiDataEntry()
     }
-    
-    func updateGraph(){
+
+    func renderManualDataEntryGraph(){
         var lineChartDataEntry = [ChartDataEntry]()
         
         for i in 0..<grades.count {
@@ -45,6 +53,32 @@ class ViewController: UIViewController {
         
         // Add title
         lineChartView.chartDescription?.text = "Line Graph - Manual Data Entry"
+    }
+    
+    func requestApiDataEntry(){
+        
+        // Request for data
+        Alamofire
+            .request(ChartService.getChartData())
+            .validate()
+            .responseObject{ (response: DataResponse<Status<Grades>>) in
+                let responseStatus = response.result.value
+                switch response.result{
+                
+                case .success:
+                    self.onRetrieveGradesSuccess(grades: responseStatus as Status<Grades>!)
+                    debugPrint(responseStatus as Status<Grades>!)
+                
+                case .failure(let error):
+                    debugPrint(error)
+                }
+                
+            }
+        
+    }
+    
+    func onRetrieveGradesSuccess(grades: Status<Grades>){
+        
     }
     
 }
