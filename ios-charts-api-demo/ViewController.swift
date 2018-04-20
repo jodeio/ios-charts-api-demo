@@ -67,7 +67,7 @@ class ViewController: UIViewController {
                 switch response.result{
                 
                 case .success:
-                    self.onRetrieveGradesSuccess(grades: responseStatus as Status<Grades>!)
+                    self.onRetrieveGradesSuccess(grades: responseStatus?.result?.gradesPerQuarter as GradesPerQuarter!)
                     debugPrint(responseStatus as Status<Grades>!)
                 
                 case .failure(let error):
@@ -78,18 +78,15 @@ class ViewController: UIViewController {
         
     }
     
-    func onRetrieveGradesSuccess(grades: Status<Grades>){
+    func onRetrieveGradesSuccess(grades: GradesPerQuarter){
         // Create data entry instance
         var lineChartDataEntry = [ChartDataEntry]()
         
-        // Assigning the retrieve quarter grades
-        let gradesPerSubject:GradesPerQuarter! = grades.result?.gradesPerQuarter
-        
         // Assigning values (constant indexes, value)
-        let firstQuarter = ChartDataEntry(x: 0, y: gradesPerSubject.firstQuarter!)
-        let secondQuarter = ChartDataEntry(x: 1, y: gradesPerSubject.secondQuarter!)
-        let thirdQuarter = ChartDataEntry(x: 2, y: gradesPerSubject.thirdQuarter!)
-        let fourthQuarter = ChartDataEntry(x: 3, y: gradesPerSubject.fourthQuarter!)
+        let firstQuarter = ChartDataEntry(x: 0, y: grades.firstQuarter!)
+        let secondQuarter = ChartDataEntry(x: 1, y: grades.secondQuarter!)
+        let thirdQuarter = ChartDataEntry(x: 2, y: grades.thirdQuarter!)
+        let fourthQuarter = ChartDataEntry(x: 3, y: grades.fourthQuarter!)
         
         // Appending values to the data entry
         lineChartDataEntry.append(firstQuarter)
