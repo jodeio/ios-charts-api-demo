@@ -122,7 +122,6 @@ class ViewController: UIViewController {
         var secondQuarterDataEntries: [BarChartDataEntry] = []
         var thirdQuarterDataEntries: [BarChartDataEntry] = []
         var fourthQuarterDataEntries: [BarChartDataEntry] = []
-
         
         // Assigning values
         for i in 0..<grades.count {
@@ -157,38 +156,42 @@ class ViewController: UIViewController {
         let barData = BarChartData(dataSets: dataSets)
         
         // Customize graph
-        let groupCount = subjects.count
-        let groupSpace = 1.0
-        let barSpace = 0.25
-        let barWidth = 0.5
+        let groupSpace = 0.08
+        let barSpace = 0.03
+        let barWidth = 0.2
         let start = 0
         
+        // Optional configurations
+        bcvApiGraph.delegate = self
         bcvApiGraph.pinchZoomEnabled = true
-        bcvApiGraph.xAxis.axisMinimum = Double(start)
-        bcvApiGraph.xAxis.axisMaximum = Double(start) + barData.groupWidth(groupSpace: groupSpace, barSpace: barSpace) * Double(groupCount)
-        bcvApiGraph.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
         bcvApiGraph.rightAxis.enabled = false
-
-        let legend = bcvApiGraph.legend
-        legend.enabled = true
-        legend.horizontalAlignment = .right
-        legend.verticalAlignment = .top
-        legend.orientation = .vertical
-        legend.drawInside = true
-        legend.yOffset = 10.0;
-        legend.xOffset = 10.0;
-        legend.yEntrySpace = 0.0;
+        bcvApiGraph.dragEnabled =  true
+        bcvApiGraph.animate(xAxisDuration: 1.5, yAxisDuration: 1.5, easingOption: .linear)
+        bcvApiGraph.setVisibleXRangeMaximum(3)
         
-        let xAxis = bcvApiGraph.xAxis
-        xAxis.drawGridLinesEnabled = true
-        xAxis.labelPosition = .bottom
-        xAxis.centerAxisLabelsEnabled = true
-        xAxis.valueFormatter = IndexAxisValueFormatter(values: subjects)
-        xAxis.granularity = 1
+        // Legend
+        bcvApiGraph.legend.enabled = true
+        bcvApiGraph.legend.horizontalAlignment = .right
+        bcvApiGraph.legend.verticalAlignment = .top
+        bcvApiGraph.legend.orientation = .vertical
+        bcvApiGraph.legend.drawInside = true
+        bcvApiGraph.legend.yOffset = 10.0;
+        bcvApiGraph.legend.xOffset = 10.0;
+        bcvApiGraph.legend.yEntrySpace = 0.0;
+
+        // X-Axis
+        bcvApiGraph.xAxis.labelCount = subjects.count
+        bcvApiGraph.xAxis.valueFormatter = BarChartFormatter(labels: subjects)
+        bcvApiGraph.xAxis.granularityEnabled = true
+        bcvApiGraph.xAxis.granularity = 1
+        bcvApiGraph.xAxis.labelPosition = .bottom
+        bcvApiGraph.xAxis.drawGridLinesEnabled = false
+        bcvApiGraph.xAxis.centerAxisLabelsEnabled = true
 
         barData.barWidth = barWidth;
         barData.groupBars(fromX: Double(start), groupSpace: groupSpace, barSpace: barSpace)
-
+        
+        
         // Render data to the view, it will trigger an update
         bcvApiGraph.data = barData
         
@@ -199,3 +202,6 @@ class ViewController: UIViewController {
     
 }
 
+extension ViewController: ChartViewDelegate {
+    
+}

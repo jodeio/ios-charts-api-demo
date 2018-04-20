@@ -15,6 +15,7 @@
 		5E318A67208A206700A358A2 /* GradesPerQuarter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E318A66208A206700A358A2 /* GradesPerQuarter.swift */; };
 		5E318A69208A240400A358A2 /* GradesPerSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E318A68208A240400A358A2 /* GradesPerSubject.swift */; };
 		5EC8CFCB208A265D00613349 /* Grades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC8CFCA208A265D00613349 /* Grades.swift */; };
+		5EC8CFCE208A4BCC00613349 /* BarChartFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC8CFCD208A4BCC00613349 /* BarChartFormatter.swift */; };
 		5EF14CDC2089FD9C006BF583 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF14CDB2089FD9C006BF583 /* AppDelegate.swift */; };
 		5EF14CDE2089FD9C006BF583 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF14CDD2089FD9C006BF583 /* ViewController.swift */; };
 		5EF14CE12089FD9C006BF583 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EF14CDF2089FD9C006BF583 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		5E318A66208A206700A358A2 /* GradesPerQuarter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesPerQuarter.swift; sourceTree = "<group>"; };
 		5E318A68208A240400A358A2 /* GradesPerSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradesPerSubject.swift; sourceTree = "<group>"; };
 		5EC8CFCA208A265D00613349 /* Grades.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grades.swift; sourceTree = "<group>"; };
+		5EC8CFCD208A4BCC00613349 /* BarChartFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartFormatter.swift; sourceTree = "<group>"; };
 		5EF14CD82089FD9C006BF583 /* ios-charts-api-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ios-charts-api-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF14CDB2089FD9C006BF583 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5EF14CDD2089FD9C006BF583 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,14 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		5EC8CFCC208A4BC200613349 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5EC8CFCD208A4BCC00613349 /* BarChartFormatter.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		5EF14CCF2089FD9C006BF583 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +183,7 @@
 		5EF14CDA2089FD9C006BF583 /* ios-charts-api-demo */ = {
 			isa = PBXGroup;
 			children = (
+				5EC8CFCC208A4BC200613349 /* Utils */,
 				5E318A5D208A1D3200A358A2 /* Constants */,
 				5E318A58208A1CC300A358A2 /* Protocol */,
 				5E318A55208A1AD000A358A2 /* Entities */,
@@ -524,6 +535,7 @@
 				5EF14CDE2089FD9C006BF583 /* ViewController.swift in Sources */,
 				5EF14CDC2089FD9C006BF583 /* AppDelegate.swift in Sources */,
 				5E318A65208A201000A358A2 /* Status.swift in Sources */,
+				5EC8CFCE208A4BCC00613349 /* BarChartFormatter.swift in Sources */,
 				5E318A69208A240400A358A2 /* GradesPerSubject.swift in Sources */,
 				5E318A67208A206700A358A2 /* GradesPerQuarter.swift in Sources */,
 			);
