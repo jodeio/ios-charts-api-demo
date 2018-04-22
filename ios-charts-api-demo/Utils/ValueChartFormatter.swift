@@ -8,7 +8,7 @@
 
 import Charts
 
-class BarChartFormatter: NSObject, IAxisValueFormatter {
+class ValueChartFormatter: NSObject, IAxisValueFormatter {
     
     var labels: [String] = []
     

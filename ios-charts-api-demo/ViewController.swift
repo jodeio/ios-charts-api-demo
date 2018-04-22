@@ -19,7 +19,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var bcvApiGraph: BarChartView!
     
     // Local data
-    let grades = [95, 92, 91, 85, 75, 95]
+    let grades = [95, 92, 91, 85]
+    let quarters = ["First", "Second","Third","Fourth"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,10 @@ class ViewController: UIViewController {
         let line1 = LineChartDataSet(values: lineChartDataEntry, label: "Grade")
         
         // Customize graph
+        lcvManualGraph.xAxis.valueFormatter = ValueChartFormatter(labels: quarters)
+        lcvManualGraph.xAxis.granularityEnabled = true
+        lcvManualGraph.xAxis.granularity = 1
+        lcvManualGraph.xAxis.labelPosition = .bottom
         line1.colors = [UIColor.green]
         
         // Add data set to chart data
@@ -86,6 +91,7 @@ class ViewController: UIViewController {
         
         // Assigning values (constant indexes, value)
         let firstQuarter = ChartDataEntry(x: 0, y: grades.firstQuarter!)
+        firstQuarter.accessibilityLabel = "aw"
         let secondQuarter = ChartDataEntry(x: 1, y: grades.secondQuarter!)
         let thirdQuarter = ChartDataEntry(x: 2, y: grades.thirdQuarter!)
         let fourthQuarter = ChartDataEntry(x: 3, y: grades.fourthQuarter!)
@@ -100,6 +106,10 @@ class ViewController: UIViewController {
         let line1 = LineChartDataSet(values: lineChartDataEntry, label: "Grade")
         
         // Customize graph
+        lcvApiGraph.xAxis.valueFormatter = ValueChartFormatter(labels: quarters)
+        lcvApiGraph.xAxis.granularityEnabled = true
+        lcvApiGraph.xAxis.granularity = 1
+        lcvApiGraph.xAxis.labelPosition = .bottom
         line1.colors = [UIColor.green]
         
         // Add data set to chart data
@@ -181,7 +191,7 @@ class ViewController: UIViewController {
 
         // X-Axis
         bcvApiGraph.xAxis.labelCount = subjects.count
-        bcvApiGraph.xAxis.valueFormatter = BarChartFormatter(labels: subjects)
+        bcvApiGraph.xAxis.valueFormatter = ValueChartFormatter(labels: subjects)
         bcvApiGraph.xAxis.granularityEnabled = true
         bcvApiGraph.xAxis.granularity = 1
         bcvApiGraph.xAxis.labelPosition = .bottom
